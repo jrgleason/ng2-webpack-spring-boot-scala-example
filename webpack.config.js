@@ -14,7 +14,7 @@ module.exports = {
     },
     output: {
         filename: "[name].js",
-        path: path.join(__dirname, "src/main/webapp/public")
+        path: path.join(__dirname, "src/main/webapp/public/webpack")
     },
     resolve: {
         extensions: ['', '.js', '.ts', '.pug', '.json', '.styl']

@@ -11,10 +11,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:/public/index.html");
-        registry.addViewController("/polyfills.js").setViewName("forward:/public/polyfills.js");
-        registry.addViewController("/vendor.js").setViewName("forward:/public/vendor.js");
-        registry.addViewController("/app.js").setViewName("forward:/public/app.js");
-        registry.addViewController("/img/statesmall.png").setViewName("forward:/public/imgs/statesmall.png");
+        registry.addViewController("/").setViewName("forward:/public/webpack/index.html");
+        registry.addViewController("/polyfills.js").setViewName("forward:/public/webpack/polyfills.js");
+        registry.addViewController("/vendor.js").setViewName("forward:/public/webpack/vendor.js");
+        registry.addViewController("/app.js").setViewName("forward:/public/webpack/app.js");
+        registry.addViewController("/imgs/statesmall.png").setViewName("forward:/public/imgs/statesmall.png");
     }
 }

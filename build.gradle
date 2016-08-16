@@ -9,9 +9,13 @@
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE'
+        classpath "com.moowork.gradle:gradle-node-plugin:0.13"
     }
 }
 
@@ -23,6 +27,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'scala'
+apply plugin: 'com.moowork.node'
 
 jar {
     baseName = 'paxata-boot'
@@ -60,6 +65,12 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+task webpack(type: Exec) {
+   commandLine 'webpack'
+}
+task npm(type: Exec) {
+    commandLine 'npm install'
+}
 sourceSets {
     main {
         scala {
@@ -70,3 +81,6 @@ sourceSets {
         }
     }
 }
+npm_install.dependsOn npm_cache_clean
+webpack.dependsOn npm_install
+build.dependsOn webpack
