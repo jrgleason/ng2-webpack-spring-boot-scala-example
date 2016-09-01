@@ -58,6 +58,10 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile group: 'org.scala-lang', name: 'scala-library', version: '2.11.7'
     compile group: 'org.springframework', name: 'spring-messaging', version: '4.0.0.RELEASE'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.9.2'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    compile group: 'org.apache.commons', name: 'commons-math3', version: '3.2'
     // end::actuator[]
     testCompile("junit:junit")
 }
@@ -83,4 +87,4 @@ sourceSets {
 }
 npm_install.dependsOn npm_cache_clean
 webpack.dependsOn npm_install
-build.dependsOn webpack
+processResources.dependsOn webpack

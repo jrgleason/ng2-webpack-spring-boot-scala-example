@@ -14,27 +14,13 @@ module.exports = {
     },
     output: {
         filename: "[name].js",
-        path: path.join(__dirname, "src/main/webapp/public/webpack")
+        path: path.join(__dirname, "src/main/resources/static")
     },
     resolve: {
         extensions: ['', '.js', '.ts', '.pug', '.json', '.styl']
     },
 
     module: {
-        preLoaders: [
-            {
-                test: /\.js$/,
-                loader: 'source-map-loader',
-                exclude: [
-                    // these packages have problems with their sourcemaps
-                    path.join(__dirname,'node_modules/rxjs'),
-                    path.join(__dirname,'node_modules/@angular'),
-                    path.join(__dirname,'node_modules/@ngrx'),
-                    path.join(__dirname,'node_modules/@angular2-material')
-                ]
-            }
-
-        ],
         loaders: [
             {
                 include: /\.json/,
@@ -62,7 +48,7 @@ module.exports = {
             }
         ]
     },
-
+    devtool: '#inline-source-map',
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor', 'polyfills']
