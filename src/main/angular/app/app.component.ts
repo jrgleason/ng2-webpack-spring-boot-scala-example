@@ -4,6 +4,7 @@ import { CardsService } from "../cards/cards.service";
 // TODO: there has got to be a way to make this 1 import statement instead of 2
 import { NavbarComponent } from "./navbar/navbar.component"
 import { ShowcaseComponent } from "./showcase/showcase.component"
+import { select } from 'd3';
 @Component({
     selector: 'my-app',
     template: String(require('./app.component.pug')),
@@ -16,6 +17,8 @@ import { ShowcaseComponent } from "./showcase/showcase.component"
 export class AppComponent {
     cards : any[];
     constructor(cardsService : CardsService){
-        this.cards = cardsService.cards
+        this.cards = cardsService.cards;
+        select(".application").append("svg");
     }
+
 }
